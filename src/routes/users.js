@@ -3,20 +3,6 @@ const router = express.Router();
 const db = require("../db");
 const userQueries = require("../queries/users");
 
-router.get("/", (req, res) => {
-  try {
-    db.query("SELECT * FROM users ORDER BY id ASC", (error, response) => {
-      if (error) {
-        return res.status(500).json(error);
-      }
-
-      return res.status(200).json(response.rows);
-    });
-  } catch (error) {
-    return res.status(500).json(error);
-  }
-});
-
 router.post("/", async (req, res) => {
   try {
     const { name, email } = req.body;
@@ -119,6 +105,26 @@ router.delete("/", async (req, res) => {
     }
 
     return res.status(200).json(deleteResponse.rows[0]);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
+router.get("/", async (req, res) => {
+  try {
+    const { email } = req.query;
+
+    if (!email || email.length < 5 || !email.includes("@")) {
+      return res.status(400).json({ error: "E-mail is invalid." });
+    }
+
+    const query = userQueries.findByEmail(email);
+    const userExists = await db.query(query);
+    if (!userExists.rows[0]) {
+      return res.status(404).json({ error: "E-mail does not exists." });
+    }
+
+    return res.status(200).json(userExists.rows[0]);
   } catch (error) {
     return res.status(500).json(error);
   }
