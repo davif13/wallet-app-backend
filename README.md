@@ -5,6 +5,11 @@
 This is an API created using Node.js, Express and PostGres.
 The main goal is to create an application that controls the user finances.
 
+# Documentation:
+
+Use Insomnia to import the file below:
+https://github.com/davif13/wallet-app-backend/blob/main/insomnia.json
+
 ## Requirements
 
 - Node.js
@@ -60,8 +65,3 @@ npm run start:dev
 ```
 npm run start
 ```
-
-# Documentation:
-
-Use Insomnia to import the file below:
-https://github.com/davif13/wallet-app-backend/blob/main/insomnia.json
