@@ -40,6 +40,13 @@ docker run --name postgres-finances -e POSTGRES_PASSWORD=docker -e POSTGRES_USER
 4. Create a .env file in root following the example
 
 ```
+PORT=3000
+You can use for your database:
+
+DB_URL = Your_database_url
+
+or
+
 DB_USER=docker
 DB_PASSWORD=docker
 DB_NAME=finances
