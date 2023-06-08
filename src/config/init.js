@@ -6,8 +6,8 @@ const init = async () => {
     await db.connect();
     // await db.query(tableQueries.createDatabase());
     await db.query(tableQueries.createUsers());
-    await db.query(tableQueries.createFinances());
     await db.query(tableQueries.createCategories());
+    await db.query(tableQueries.createFinances());
     console.log("Successfully created table");
     db.end();
     return;

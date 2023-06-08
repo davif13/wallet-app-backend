@@ -14,7 +14,7 @@ const createTablesQueries = {
   createCategories: () => {
     return {
       name: "create-categories",
-      text: "CREATE TABLE categories(id SERIAL PRIMARY KEY NOT NULL, name TEXT NOT NULL)",
+      text: "CREATE TABLE categories(id SERIAL PRIMARY KEY NOT NULL,name TEXT NOT NULL)",
     };
   },
   createFinances: () => {
